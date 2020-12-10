@@ -1,0 +1,47 @@
+name: jd_update_bean_home
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0 * * *'
+  watch:
+    types: started
+  repository_dispatch:
+    types: jd_update_bean_home
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    if: github.event.repository.owner.id == github.event.sender.id
+    steps:
+      - uses: actions/checkout@v1
+      - name: Use Node.js 10.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 10.x
+      - name: npm install
+        run: |
+          npm install
+      - name: '运行 【更新抢京豆信息信息】'
+        run: |
+          node jd_update_bean_home.js
+        env:
+          JD_COOKIE: ${{ secrets.JD_COOKIE }}
+          JD_DEBUG: ${{ secrets.JD_DEBUG }}
+          DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
+          DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
+
+      - name: commit
+        run: |
+          git config --global user.email ${{ secrets.EMAIL }}
+          git config --global user.name shylocks
+          git add .
+          git commit -m "update by shylocks Github Action" -a || echo "Nothing to update"
+
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.TOKEN }}
+          branch: master
+      - name: Purge CDN Cache
+        run: curl https://purge.jsdelivr.net/gh/shylocks/updateTeam@main/jd_bean_home
