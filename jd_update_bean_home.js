@@ -10,7 +10,8 @@ if ($.isNode()) {
   Object.keys(jdCookieNode).forEach((item) => {
     cookiesArr.push(jdCookieNode[item])
   })
-  if (process.env.JD_DEBUG && process.env.JD_DEBUG === 'false') console.log = () => {};
+  if (process.env.JD_DEBUG && process.env.JD_DEBUG === 'false') console.log = () => {
+  };
 } else {
   cookiesArr.push(...[$.getdata('CookieJD'), $.getdata('CookieJD2')]);
 }
@@ -23,6 +24,7 @@ const JD_API_HOST = 'https://api.m.jd.com/';
   }
   for (let i = 0; i < cookiesArr.length; i++) {
     if (cookiesArr[i]) {
+      $.flag = false
       cookie = cookiesArr[i];
       $.UserName = decodeURIComponent(cookie.match(/pt_pin=(.+?);/) && cookie.match(/pt_pin=(.+?);/)[1])
       $.index = i + 1;
@@ -37,15 +39,18 @@ const JD_API_HOST = 'https://api.m.jd.com/';
         if ($.isNode()) {
           await notify.sendNotify(`${$.name}cookie已失效 - ${$.UserName}`, `京东账号${$.index} ${$.UserName}\n请重新登录获取cookie`);
         } else {
-          $.setdata('', `CookieJD${i ? i + 1 : "" }`);//cookie失效，故清空cookie。$.setdata('', `CookieJD${i ? i + 1 : "" }`);//cookie失效，故清空cookie。
+          $.setdata('', `CookieJD${i ? i + 1 : ""}`);//cookie失效，故清空cookie。$.setdata('', `CookieJD${i ? i + 1 : "" }`);//cookie失效，故清空cookie。
         }
         continue
       }
       await getUserInfo();
+      if(!$.flag){
+        await writeFile();
+        // await showMsg();
+        break
+      }
     }
   }
-  await writeFile();
-  await showMsg();
 })()
   .catch((e) => {
     $.log('', `❌ ${$.name}, 失败! 原因: ${e}!`, '')
@@ -53,9 +58,9 @@ const JD_API_HOST = 'https://api.m.jd.com/';
   .finally(() => {
     $.done();
   })
+
 function showMsg() {
   return new Promise(async resolve => {
-    console.log($.shareCode)
     try {
       await $.http.get({url: `https://purge.jsdelivr.net/gh/shylocks/updateTeam@main/jd_bean_home`}).then((resp) => {
         if (resp.statusCode === 200) {
@@ -71,11 +76,13 @@ function showMsg() {
     }
   })
 }
+
 async function writeFile() {
   const info = `${$.shareCode} ${$.groupCode}`
   await fs.writeFileSync('jd_bean_home', info);
   console.log(`文件写入成功,inviteCode已经替换`);
 }
+
 function getUserInfo() {
   return new Promise(resolve => {
     $.post(taskUrl('signBeanGroupStageIndex', 'body'), async (err, resp, data) => {
@@ -91,7 +98,10 @@ function getUserInfo() {
               console.log(`未获取到助力码，去开团`)
               await hitGroup()
             } else {
-              console.log(shareCode, groupCode)
+              if (data['data']['beanCountProgress']['progressNotYet']===0){
+                $.flag = true
+                console.log(`账号${$.UserName}已满员，跳过`)
+              }
               $.shareCode = shareCode
               $.groupCode = groupCode
             }
@@ -105,6 +115,7 @@ function getUserInfo() {
     })
   })
 }
+
 function hitGroup() {
   return new Promise(resolve => {
     const body = {"activeType": 2,};
@@ -122,7 +133,7 @@ function hitGroup() {
                 $.shareCode = shareCode
                 $.groupCode = groupCode
               } else {
-                console.log(`为获取到助力码，错误信息${JSON.stringify(data.data)}`)
+                console.log(`未获取到助力码，错误信息${JSON.stringify(data.data)}`)
               }
             } else {
               console.log(`开团失败，错误信息${JSON.stringify(data.data)}`)
@@ -137,6 +148,7 @@ function hitGroup() {
     })
   })
 }
+
 function taskUrl(function_id, body) {
   body["version"] = "9.0.0.1";
   body["monitor_source"] = "plant_app_plant_index";
@@ -172,6 +184,7 @@ function taskGetUrl(function_id, body) {
     }
   }
 }
+
 function TotalBean() {
   return new Promise(async resolve => {
     const options = {
@@ -210,6 +223,7 @@ function TotalBean() {
     })
   })
 }
+
 function safeGet(data) {
   try {
     if (typeof JSON.parse(data) == "object") {
