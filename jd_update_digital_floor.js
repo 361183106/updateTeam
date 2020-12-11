@@ -102,27 +102,6 @@ async function writeFile() {
   await fs.writeFileSync('jd_digital_floor', info);
   console.log(`文件写入成功,inviteCode已经替换`);
 }
-function taskPostUrl(function_id, body) {
-  return {
-    url: `${JD_API_HOST}${function_id}?t=${new Date().getTime() + new Date().getTimezoneOffset()*60*1000 + 8*60*60*1000}`,
-    body: body,
-    headers: {
-      'Host': 'digital-floor.m.jd.com',
-      'pragma': 'no-cache',
-      'cache-control': 'no-cache',
-      'accept': 'application/json, text/plain, */*',
-      'dnt': '1',
-      'content-type': 'application/x-www-form-urlencoded',
-      'origin': 'https://pro.m.jd.com',
-      'sec-fetch-site': 'same-site',
-      'sec-fetch-mode': 'cors',
-      'sec-fetch-dest': 'empty',
-      'referer': 'https://pro.m.jd.com/',
-      'accept-language': 'zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6',
-      'Cookie': cookie,
-      'user-agent': 'jdapp;iPhone;9.2.0;14.0;53f4d9c70c1c81f1c8769d2fe2fef0190a3f60d2;network/wifi;supportApplePay/3;hasUPPay/1;pushNoticeIsOpen/0;model/iPhone10,2;addressid/138413818;hasOCPay/0;appBuild/167408;supportBestPay/1;jdSupportDarkMode/0;pv/1710.16;apprpd/WorthBuy_List;ref/JDWebViewController;psq/2;ads/;psn/53f4d9c70c1c81f1c8769d2fe2fef0190a3f60d2|5870;jdv/0|kong|t_1000089893_|tuiguang|9a75f97593f344eb9c46b99e196608d2|1605846323;adk/;app_device/IOS;pap/JA2015_311210|9.2.0|IOS 14.0;Mozilla/5.0 (iPhone; CPU iPhone OS 14_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148;supportJDSHWK/1',}
-  }
-}
 function taskUrl(function_id) {
   return {
     url: `${JD_API_HOST}${function_id}?t=${new Date().getTime() + new Date().getTimezoneOffset()*60*1000 + 8*60*60*1000}`,
