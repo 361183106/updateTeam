@@ -100,7 +100,7 @@ function getUserInfo() {
 }
 async function writeFile() {
   if(!$.shareId) return
-  
+
   const info = `${$.shareId}`
   await fs.writeFileSync('jd_digital_floor', info);
   console.log(`文件写入成功,inviteCode已经替换`);
