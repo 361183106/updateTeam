@@ -86,6 +86,7 @@ function getUserInfo() {
             data = JSON.parse(data);
             if (data.code === 200) {
               $.shareId = data.data.shareId
+              console.log(data.data)
             }
           }
         }
