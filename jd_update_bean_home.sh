@@ -5,3 +5,4 @@ git add .
 git commit -m "update by shylocks vps" -a || echo "Nothing to update"
 
 git push https://shylocks:$GITHUBTOEKN@github.com/shylocks/updateTeam.git HEAD:main --follow-tags '--force'
+curl https://purge.jsdelivr.net/gh/shylocks/updateTeam@main/jd_bean_home
