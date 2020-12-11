@@ -1,3 +1,4 @@
+cd /home/shylocks/Projects/updateTeam
 node jd_update_bean_home.js
 git config --global user.email shylocksyang@gmail.com
 git config --global user.name shylocks
