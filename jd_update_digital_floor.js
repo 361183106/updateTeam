@@ -85,8 +85,8 @@ function getUserInfo() {
           if (safeGet(data)) {
             data = JSON.parse(data);
             if (data.code === 200) {
-              $.shareId = data.data.shareId
-              console.log(data.data)
+              if(data.data)
+                $.shareId = data.data.shareId
             }
           }
         }
@@ -99,6 +99,7 @@ function getUserInfo() {
   })
 }
 async function writeFile() {
+  if(!$.shareId) return
   const info = `${$.shareId}`
   await fs.writeFileSync('jd_digital_floor', info);
   console.log(`文件写入成功,inviteCode已经替换`);

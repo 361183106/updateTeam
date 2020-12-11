@@ -78,6 +78,7 @@ function showMsg() {
 }
 
 async function writeFile() {
+  if(!$.shareCode) return
   const info = `${$.shareCode} ${$.groupCode}`
   await fs.writeFileSync('jd_bean_home', info);
   console.log(`文件写入成功,inviteCode已经替换`);
@@ -137,6 +138,7 @@ function hitGroup() {
               }
             } else {
               console.log(`开团失败，错误信息${JSON.stringify(data.data)}`)
+              $.shareCode = null
             }
           }
         }
