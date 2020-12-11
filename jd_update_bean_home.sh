@@ -4,4 +4,4 @@ git config --global user.name shylocks
 git add .
 git commit -m "update by shylocks vps" -a || echo "Nothing to update"
 
-git push https://shylocks:${INPUT_GITHUB_TOKEN}@github.com/${REPOSITORY}.git HEAD:main --follow-tags '--force'
+git push https://shylocks:$GITHUBTOEKN@github.com/shylocks/updateTeam.git HEAD:main --follow-tags '--force'
