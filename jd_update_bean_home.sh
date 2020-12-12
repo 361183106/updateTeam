@@ -1,5 +1,6 @@
 cd /home/shylocks/Projects/updateTeam
 node jd_update_bean_home.js
+node jd_update_live_redrain.js
 git config --global user.email shylocksyang@gmail.com
 git config --global user.name shylocks
 git add .
