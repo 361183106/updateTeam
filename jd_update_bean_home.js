@@ -99,8 +99,7 @@ function getUserInfo() {
               console.log(`未获取到助力码，去开团`)
               await hitGroup()
             } else {
-              console.log(data)
-              console.log(`${data['data']['beanCountProgress']['progressNotYet']}`)
+              console.log(`${data['data']['beanCountProgress']['progressAlready']}`)
               if (data['data']['beanCountProgress']['progressNotYet']===0){
                 $.flag = true
                 console.log(`账号${$.UserName}已满员，跳过`)
