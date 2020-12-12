@@ -137,6 +137,7 @@ function hitGroup() {
                 console.log(`未获取到助力码，错误信息${JSON.stringify(data.data)}`)
               }
             } else {
+              $.flag = true
               console.log(`开团失败，错误信息${JSON.stringify(data.data)}`)
             }
           }
