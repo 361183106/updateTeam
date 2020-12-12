@@ -46,7 +46,7 @@ const JD_API_HOST = 'https://api.m.jd.com/';
       await getUserInfo();
       if(!$.flag){
         await writeFile();
-        await showMsg();
+        //await showMsg();
         break
       }
     }
@@ -99,7 +99,6 @@ function getUserInfo() {
               console.log(`未获取到助力码，去开团`)
               await hitGroup()
             } else {
-              console.log(`账号${$.UserName} 当前助力人数：${data['data']['beanCountProgress']['progressNotYet']}`)
               if (data['data']['beanCountProgress']['progressNotYet']===0){
                 $.flag = true
                 console.log(`账号${$.UserName}已满员，跳过`)
@@ -139,7 +138,6 @@ function hitGroup() {
               }
             } else {
               console.log(`开团失败，错误信息${JSON.stringify(data.data)}`)
-              $.shareCode = null
             }
           }
         }
