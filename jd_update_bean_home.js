@@ -94,6 +94,7 @@ function getUserInfo() {
         } else {
           if (safeGet(data)) {
             data = JSON.parse(data);
+		  //console.log(data)
             let {shareCode, groupCode} = data.data
             if (!shareCode) {
               console.log(`未获取到助力码，去开团`)
