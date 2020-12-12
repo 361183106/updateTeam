@@ -94,12 +94,12 @@ function getUserInfo() {
         } else {
           if (safeGet(data)) {
             data = JSON.parse(data);
-		  //console.log(data)
             let {shareCode, groupCode} = data.data
             if (!shareCode) {
               console.log(`未获取到助力码，去开团`)
               await hitGroup()
             } else {
+              console.log(`账号${$.UserName} 当前助力人数：${data['data']['beanCountProgress']['progressNotYet']}`)
               if (data['data']['beanCountProgress']['progressNotYet']===0){
                 $.flag = true
                 console.log(`账号${$.UserName}已满员，跳过`)
