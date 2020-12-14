@@ -6,11 +6,16 @@ let bodyList = [
   'area=12_904_908_57903&body=%7B%22liveId%22%3A%223051528%22%7D&build=167454&client=apple&clientVersion=9.3.0&d_brand=apple&d_model=iPhone10%2C2&eid=eidIF3CF0112RTIyQTVGQTEtRDVCQy00Qg%3D%3D6HAJa9%2B/4Vedgo62xKQRoAb47%2Bpyu1EQs/6971aUvk0BQAsZLyQAYeid%2BPgbJ9BQoY1RFtkLCLP5OMqU&isBackground=N&joycious=200&lang=zh_CN&networkType=wifi&networklibtype=JDNetworkBaseAF&openudid=53f4d9c70c1c81f1c8769d2fe2fef0190a3f60d2&osVersion=14.2&partner=apple&rfs=0000&scope=01&screen=1242%2A2208&sign=955a4bd9d5f7e5c0474fddb2d6c197ed&st=1607929827898&sv=122&uts=0f31TVRjBStSN/KN45aFsqdm3cWx37OzS1DDtk92JjY5o9rpnbqdxuWWjY1Kj0hprZ3Y/h4YnVAKPaM%2BG7COEsUoR7Ipf%2Bo064gHc0b7RTt8mSsfXj89o2TXV2acOL4C3PjlJcAT3y8llwzZ95L05bP83LwVCKDw5VKxH%2BVOGmWbz/boo8SKzlVwvh9pqeQ9krJkAVK8QgWXYep5imvA3Q%3D%3D&uuid=hjudwgohxzVu96krv/T6Hg%3D%3D&wifiBssid=0901b53c0bfa09098a58d62f93c9e978',
   'area=12_904_908_57903&body=%7B%22liveId%22%3A%223007651%22%7D&build=167454&client=apple&clientVersion=9.3.0&d_brand=apple&d_model=iPhone10%2C2&eid=eidIF3CF0112RTIyQTVGQTEtRDVCQy00Qg%3D%3D6HAJa9%2B/4Vedgo62xKQRoAb47%2Bpyu1EQs/6971aUvk0BQAsZLyQAYeid%2BPgbJ9BQoY1RFtkLCLP5OMqU&isBackground=N&joycious=200&lang=zh_CN&networkType=wifi&networklibtype=JDNetworkBaseAF&openudid=53f4d9c70c1c81f1c8769d2fe2fef0190a3f60d2&osVersion=14.2&partner=apple&rfs=0000&scope=01&screen=1242%2A2208&sign=0bcef8684ad7988492913658c45c7867&st=1607929844865&sv=102&uts=0f31TVRjBStSN/KN45aFsqdm3cWx37OzS1DDtk92JjY5o9rpnbqdxuWWjY1Kj0hprZ3Y/h4YnVAKPaM%2BG7COEsUoR7Ipf%2Bo064gHc0b7RTt8mSsfXj89o2TXV2acOL4C3PjlJcAT3y8llwzZ95L05bP83LwVCKDw5VKxH%2BVOGmWbz/boo8SKzlVwvh9pqeQ9krJkAVK8QgWXYep5imvA3Q%3D%3D&uuid=hjudwgohxzVu96krv/T6Hg%3D%3D&wifiBssid=0901b53c0bfa09098a58d62f93c9e978',
   'area=12_904_908_57903&body=%7B%22liveId%22%3A%223002441%22%7D&build=167454&client=apple&clientVersion=9.3.0&d_brand=apple&d_model=iPhone10%2C2&eid=eidIF3CF0112RTIyQTVGQTEtRDVCQy00Qg%3D%3D6HAJa9%2B/4Vedgo62xKQRoAb47%2Bpyu1EQs/6971aUvk0BQAsZLyQAYeid%2BPgbJ9BQoY1RFtkLCLP5OMqU&isBackground=N&joycious=200&lang=zh_CN&networkType=wifi&networklibtype=JDNetworkBaseAF&openudid=53f4d9c70c1c81f1c8769d2fe2fef0190a3f60d2&osVersion=14.2&partner=apple&rfs=0000&scope=01&screen=1242%2A2208&sign=779a2952f8a346bea2a72fe7992c4c64&st=1607929855810&sv=111&uts=0f31TVRjBStSN/KN45aFsqdm3cWx37OzS1DDtk92JjY5o9rpnbqdxuWWjY1Kj0hprZ3Y/h4YnVAKPaM%2BG7COEsUoR7Ipf%2Bo064gHc0b7RTt8mSsfXj89o2TXV2acOL4C3PjlJcAT3y8llwzZ95L05bP83LwVCKDw5VKxH%2BVOGmWbz/boo8SKzlVwvh9pqeQ9krJkAVK8QgWXYep5imvA3Q%3D%3D&uuid=hjudwgohxzVu96krv/T6Hg%3D%3D&wifiBssid=0901b53c0bfa09098a58d62f93c9e978',
-  
+  'area=12_904_908_57903&body=%7B%22liveId%22%3A%223055159%22%7D&build=167454&client=apple&clientVersion=9.3.0&d_brand=apple&d_model=iPhone10%2C2&eid=eidIF3CF0112RTIyQTVGQTEtRDVCQy00Qg%3D%3D6HAJa9%2B/4Vedgo62xKQRoAb47%2Bpyu1EQs/6971aUvk0BQAsZLyQAYeid%2BPgbJ9BQoY1RFtkLCLP5OMqU&isBackground=N&joycious=200&lang=zh_CN&networkType=wifi&networklibtype=JDNetworkBaseAF&openudid=53f4d9c70c1c81f1c8769d2fe2fef0190a3f60d2&osVersion=14.2&partner=apple&rfs=0000&scope=01&screen=1242%2A2208&sign=5ecb27b1833d02e9045a80af284f82aa&st=1607929867230&sv=110&uts=0f31TVRjBStSN/KN45aFsqdm3cWx37OzS1DDtk92JjY5o9rpnbqdxuWWjY1Kj0hprZ3Y/h4YnVAKPaM%2BG7COEsUoR7Ipf%2Bo064gHc0b7RTt8mSsfXj89o2TXV2acOL4C3PjlJcAT3y8llwzZ95L05bP83LwVCKDw5VKxH%2BVOGmWbz/boo8SKzlVwvh9pqeQ9krJkAVK8QgWXYep5imvA3Q%3D%3D&uuid=hjudwgohxzVu96krv/T6Hg%3D%3D&wifiBssid=0901b53c0bfa09098a58d62f93c9e978'
 ]
 !(async () => {
-  await getRedRain();
-  await writeFile();
+  for(let i=0;i<bodyList.length;++i){
+    await getRedRain(bodyList[i]);
+    if($.activityId) {
+      await writeFile();
+      break
+    }
+  }
 })()
   .catch((e) => {
     $.log('', `❌ ${$.name}, 失败! 原因: ${e}!`, '')
@@ -31,9 +36,9 @@ async function writeFile() {
   console.log(`文件写入成功`);
 }
 
-function getRedRain() {
+function getRedRain(body) {
   return new Promise(resolve => {
-    $.post(taskPostUrl('liveActivityV842'), (err, resp, data) => {
+    $.post(taskPostUrl('liveActivityV842',body), (err, resp, data) => {
       try {
         if (err) {
           console.log(`${JSON.stringify(err)}`)
@@ -65,8 +70,7 @@ function getRedRain() {
 function taskPostUrl(function_id, body = {}) {
   return {
     url: `https://api.m.jd.com/client.action?functionId=${function_id}`,
-    body: 'area=12_904_908_57903&body=%7B%22liveId%22%3A%222999404%22%7D&build=167454&client=apple&clientVersion=9.3.0&d_brand=apple&d_model=iPhone10%2C2&eid=eidIF3CF0112RTIyQTVGQTEtRDVCQy00Qg%3D%3D6HAJa9%2B/4Vedgo62xKQRoAb47%2Bpyu1EQs/6971aUvk0BQAsZLyQAYeid%2BPgbJ9BQoY1RFtkLCLP5OMqU&isBackground=N&joycious=194&lang=zh_CN&networkType=wifi&networklibtype=JDNetworkBaseAF&openudid=53f4d9c70c1c81f1c8769d2fe2fef0190a3f60d2&osVersion=14.2&partner=apple&rfs=0000&scope=01&screen=1242%2A2208&sign=7e065378647db1989a79394c6b4d84d3&st=1607778097027&sv=110&uts=0f31TVRjBSsySvX9aqk89gHBMqz5E28EYCqc3cRu/4%2Bv0EzRuStHwMI1R5P9RqeizLow/pAquaX1v5IJQGVxUzSfExCFmfO0L7BEMvXnkeCZhKEsmSkbQm54W7ig8aRsmHiXp7YT/SOV7sEKxXauv59O/SAAFkr1egGgKev7Uj81nJRFDnNRSomlrOj2jQzH6iddCTSpydcSYRnDyDcodA%3D%3D&uuid=hjudwgohxzVu96krv/T6Hg%3D%3D&wifiBssid=eca3570e9aa3c15b2fad65c40a87f0fb'
-    ,
+    body: body,
     headers: {
       'Host': 'api.m.jd.com',
       'content-type': 'application/x-www-form-urlencoded',
