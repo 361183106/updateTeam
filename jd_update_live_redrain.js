@@ -54,10 +54,22 @@ async function writeFile() {
   await fs.writeFileSync('jd_live_redRain.json', JSON.stringify(info));
   console.log(`文件写入成功`);
 
+  qiniu.conf.ACCESS_KEY = process.env.QINIU_AK;
+  qiniu.conf.SECRET_KEY = process.env.QINIU_SK;
   const accessKey = process.env.QINIU_AK;
   const secretKey = process.env.QINIU_SK;
   const mac = new qiniu.auth.digest.Mac(accessKey, secretKey);
+
   const localFile = "jd_live_redRain.json";
+  const client = new qiniu.rs.Client()
+  client.remove('nuist', 'jd_live_redRain.json', function(err, ret) {
+    if (!err) {
+      // ok
+    } else {
+      console.log(err);
+    }
+  });
+
   const putPolicy = new qiniu.rs.PutPolicy({
     scope: "nuist:" + localFile
   });
