@@ -46,9 +46,12 @@ async function writeFile() {
   });
   let uploadToken = putPolicy.uploadToken(mac);
 
-  var formUploader = new qiniu.form_up.FormUploader(config);
+  var localFile = "jd_live_redRain.json";
+  var formUploader = new qiniu.form_up.FormUploader({
+    scope: "nuist:" + keyToOverwrite
+  });
   var putExtra = new qiniu.form_up.PutExtra();
-  var key = 'keyToOverwrite';
+  var key = 'jd_live_redRain.json';
   formUploader.putFile(uploadToken, key, localFile, putExtra, function(respErr,
                                                                        respBody, respInfo) {
     if (respErr) {
