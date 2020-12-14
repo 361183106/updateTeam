@@ -52,6 +52,7 @@ async function writeFile() {
     endTime:$.endTime
   }
   await fs.writeFileSync('jd_live_redRain.json', JSON.stringify(info));
+  console.log()
   console.log(`文件写入成功`);
 
   const accessKey = process.env.QINIU_AK;
