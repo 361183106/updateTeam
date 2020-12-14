@@ -40,18 +40,18 @@ async function writeFile() {
   const accessKey = process.env.QINIU_AK;
   const secretKey = process.env.QINIU_SK;
   const mac = new qiniu.auth.digest.Mac(accessKey, secretKey);
-  let keyToOverwrite = 'jd_live_redRain.json';
+  const localFile = "jd_live_redRain.json";
   const putPolicy = new qiniu.rs.PutPolicy({
-    scope: "nuist:" + keyToOverwrite
+    scope: "nuist:" + localFile
   });
-  let uploadToken = putPolicy.uploadToken(mac);
+  const uploadToken = putPolicy.uploadToken(mac);
 
-  var localFile = "jd_live_redRain.json";
-  var formUploader = new qiniu.form_up.FormUploader({
-    scope: "nuist:" + keyToOverwrite
+
+  const formUploader = new qiniu.form_up.FormUploader({
+    scope: "nuist:" + localFile
   });
-  var putExtra = new qiniu.form_up.PutExtra();
-  var key = 'jd_live_redRain.json';
+  const putExtra = new qiniu.form_up.PutExtra();
+  const key = 'jd_live_redRain.json';
   formUploader.putFile(uploadToken, key, localFile, putExtra, function(respErr,
                                                                        respBody, respInfo) {
     if (respErr) {
