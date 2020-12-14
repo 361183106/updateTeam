@@ -1,5 +1,6 @@
 const $ = new Env('更新京东红包雨');
 const fs = require('fs');
+const qiniu = require('qiniu')
 var accessKey = 'your access key';
 var secretKey = 'your secret key';
 var mac = new qiniu.auth.digest.Mac(accessKey, secretKey);
