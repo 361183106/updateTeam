@@ -82,16 +82,15 @@ async function writeFile() {
     }
   });
 
-  var urlsToRefresh = [
+  let urlsToRefresh = [
     'http://ql4kk90rw.hb-bkt.clouddn.com/jd_live_redRain.json'
   ];
-  var cdnManager = new qiniu.cdn.CdnManager(mac);
-//刷新链接，单次请求链接不可以超过100个，如果超过，请分批发送请求
+  let cdnManager = new qiniu.cdn.CdnManager(mac);
+
   cdnManager.refreshUrls(urlsToRefresh, function(err, respBody, respInfo) {
     if (err) {
       throw err;
     }
-    console.log(respInfo.statusCode);
     if (respInfo.statusCode === 200) {
       console.log('刷新成功！')
     }
