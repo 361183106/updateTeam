@@ -53,7 +53,7 @@ async function writeFile() {
   }
   await fs.writeFileSync('jd_live_redRain.json', JSON.stringify(info));
   console.log(`文件写入成功`);
-
+  // 覆盖文件，获取token
   const accessKey = process.env.QINIU_AK;
   const secretKey = process.env.QINIU_SK;
   const mac = new qiniu.auth.digest.Mac(accessKey, secretKey);
@@ -63,7 +63,7 @@ async function writeFile() {
   });
   const uploadToken = putPolicy.uploadToken(mac);
 
-
+  // 上传文件
   const formUploader = new qiniu.form_up.FormUploader({
     scope: "nuist:" + localFile
   });
@@ -82,6 +82,7 @@ async function writeFile() {
     }
   });
 
+  // 刷新缓存
   let urlsToRefresh = [
     'http://ql4kk90rw.hb-bkt.clouddn.com/jd_live_redRain.json'
   ];
