@@ -36,7 +36,7 @@ async function writeFile() {
   }
   await fs.writeFileSync('jd_live_redRain.json', JSON.stringify(info));
   console.log(`文件写入成功`);
-  
+
   const accessKey = process.env.QINIU_AK;
   const secretKey = process.env.QINIU_SK;
   const mac = new qiniu.auth.digest.Mac(accessKey, secretKey);
@@ -44,7 +44,23 @@ async function writeFile() {
   const putPolicy = new qiniu.rs.PutPolicy({
     scope: "nuist:" + keyToOverwrite
   });
-  let uploadToken=putPolicy.uploadToken(mac);
+  let uploadToken = putPolicy.uploadToken(mac);
+
+  var formUploader = new qiniu.form_up.FormUploader(config);
+  var putExtra = new qiniu.form_up.PutExtra();
+  var key = 'keyToOverwrite';
+  formUploader.putFile(uploadToken, key, localFile, putExtra, function(respErr,
+                                                                       respBody, respInfo) {
+    if (respErr) {
+      throw respErr;
+    }
+    if (respInfo.statusCode == 200) {
+      console.log(respBody);
+    } else {
+      console.log(respInfo.statusCode);
+      console.log(respBody);
+    }
+  });
 
 }
 
