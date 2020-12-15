@@ -124,14 +124,16 @@ function getRedRain(body) {
         } else {
           if (safeGet(data)) {
             data = JSON.parse(data);
-            if (data && data.data && data.data.iconArea) {
+            if (data.data && data.data.iconArea) {
               let act = data.data.iconArea.filter(vo=>vo['type']==="platform_red_packege_rain")[0]
-              let url = act.data.activityUrl
-              $.activityId = url.substr(url.indexOf("id=") + 3)
-              $.startTime = act.startTime
-              $.endTime = act.endTime
-              console.log(`下一场红包雨开始时间：${new Date(act.startTime)}`)
-              console.log(`下一场红包雨结束时间：${new Date(act.endTime)}`)
+              if(act) {
+                let url = act.data.activityUrl
+                $.activityId = url.substr(url.indexOf("id=") + 3)
+                $.startTime = act.startTime
+                $.endTime = act.endTime
+                console.log(`下一场红包雨开始时间：${new Date(act.startTime)}`)
+                console.log(`下一场红包雨结束时间：${new Date(act.endTime)}`)
+              }
             } else {
               console.log(`暂无红包雨`)
             }
