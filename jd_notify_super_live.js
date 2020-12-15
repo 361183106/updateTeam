@@ -53,7 +53,7 @@ function getLiveInfo(body) {
 
 function taskUrl(function_id) {
   return {
-    url: `${JD_API_HOST}${function_id}?t=${new Date().getTime() + new Date().getTimezoneOffset()*60*1000 + 8*60*60*1000}`,
+    url: `https://api.m.jd.com/?apiappid=h5-live&functionId=liveDetailToM&body=%7B%20%20%20%20%20%22liveId%22%3A%20%223049668%22%20%7D&t=${new Date().getTime() + new Date().getTimezoneOffset()*60*1000 + 8*60*60*1000}`,
     headers: {
       'Host': 'digital-floor.m.jd.com',
       'pragma': 'no-cache',
