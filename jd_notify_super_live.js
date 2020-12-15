@@ -1,14 +1,8 @@
 const $ = new Env('更新京东红包雨');
-const fs = require('fs');
-const qiniu = require('qiniu')
 const notify = $.isNode() ? require('./sendNotify') : '';
 !(async () => {
   await getLiveInfo()
-  if($.activityId) {
-    await notify.sendNotify(`${new Date($.startTime).getHours()}点红包雨更新成功！`,'');
-  }else{
-    await notify.sendNotify(`${new Date($.startTime).getHours()}点红包雨无法更新，请检查！`,'');
-  }
+
 })()
   .catch((e) => {
     $.log('', `❌ ${$.name}, 失败! 原因: ${e}!`, '')
@@ -25,21 +19,10 @@ function getLiveInfo(body) {
           console.log(`${JSON.stringify(err)}`)
           console.log(`${$.name} API请求失败，请检查网路重试`)
         } else {
+          console.log(data)
           if (safeGet(data)) {
             data = JSON.parse(data);
-            if (data.data && data.data.iconArea) {
-              let act = data.data.iconArea.filter(vo=>vo['type']==="platform_red_packege_rain")[0]
-              if (act) {
-                let url = act.data.activityUrl
-                $.activityId = url.substr(url.indexOf("id=") + 3)
-                $.startTime = act.startTime
-                $.endTime = act.endTime
-                console.log(`下一场红包雨开始时间：${new Date(act.startTime)}`)
-                console.log(`下一场红包雨结束时间：${new Date(act.endTime)}`)
-              }
-            } else {
-              console.log(`暂无红包雨`)
-            }
+            console.log(data)
           }
         }
       } catch (e) {
@@ -51,9 +34,9 @@ function getLiveInfo(body) {
   })
 }
 
-function taskUrl(function_id) {
+function taskUrl() {
   return {
-    url: `https://api.m.jd.com/?apiappid=h5-live&functionId=liveDetailToM&body=%7B%20%20%20%20%20%22liveId%22%3A%20%223049668%22%20%7D&t=${new Date().getTime() + new Date().getTimezoneOffset()*60*1000 + 8*60*60*1000}`,
+    url: `https://api.m.jd.com/api?appid=h5-live&functionId=liveDetailToM&body=%7B%20%20%20%20%20%22liveId%22%3A%20%223049668%22%20%7D&t=${new Date().getTime() + new Date().getTimezoneOffset()*60*1000 + 8*60*60*1000}`,
     headers: {
       'Host': 'digital-floor.m.jd.com',
       'pragma': 'no-cache',
@@ -67,7 +50,6 @@ function taskUrl(function_id) {
       'sec-fetch-dest': 'empty',
       'referer': 'https://pro.m.jd.com/',
       'accept-language': 'zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6',
-      'Cookie': cookie,
       'user-agent': 'jdapp;iPhone;9.2.0;14.0;53f4d9c70c1c81f1c8769d2fe2fef0190a3f60d2;network/wifi;supportApplePay/3;hasUPPay/1;pushNoticeIsOpen/0;model/iPhone10,2;addressid/138413818;hasOCPay/0;appBuild/167408;supportBestPay/1;jdSupportDarkMode/0;pv/1710.16;apprpd/WorthBuy_List;ref/JDWebViewController;psq/2;ads/;psn/53f4d9c70c1c81f1c8769d2fe2fef0190a3f60d2|5870;jdv/0|kong|t_1000089893_|tuiguang|9a75f97593f344eb9c46b99e196608d2|1605846323;adk/;app_device/IOS;pap/JA2015_311210|9.2.0|IOS 14.0;Mozilla/5.0 (iPhone; CPU iPhone OS 14_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148;supportJDSHWK/1',}
   }
 }
