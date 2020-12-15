@@ -124,7 +124,7 @@ function getRedRain(body) {
         } else {
           if (safeGet(data)) {
             data = JSON.parse(data);
-            if (data.data && data.data.iconArea) {
+            if (data && data.data && data.data.iconArea) {
               let act = data.data.iconArea.filter(vo=>vo['type']==="platform_red_packege_rain")[0]
               let url = act.data.activityUrl
               $.activityId = url.substr(url.indexOf("id=") + 3)
