@@ -13,7 +13,7 @@ const notify = $.isNode() ? require('./sendNotify') : '';
 
 function getLiveInfo(body) {
   return new Promise(resolve => {
-    $.get(taskUrl('liveActivityV842',body), (err, resp, data) => {
+    $.get(taskUrl('liveActivityV842',body), async (err, resp, data) => {
       try {
         if (err) {
           console.log(`${JSON.stringify(err)}`)
@@ -21,7 +21,9 @@ function getLiveInfo(body) {
         } else {
           if (safeGet(data)) {
             data = JSON.parse(data);
-            console.log(new Date(data.data.publishTime).toDateString())
+            if(new Date(data.data.publishTime).toDateString() === new Date().toDateString()){
+              await notify.sendNotify("超级直播间开播了", '');
+            }
           }
         }
       } catch (e) {
