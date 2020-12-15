@@ -1,24 +1,4 @@
-/*
-京东心愿单
-12月13日-12月28日，每日20豆
-12月29日-1月1日，每日30豆
-已支持IOS双京东账号,Node.js支持N个京东账号
-脚本兼容: QuantumultX, Surge, Loon, JSBox, Node.js
-============Quantumultx===============
-[task_local]
-#京东心愿单
-10 8 * * * https://raw.githubusercontent.com/lxk0301/jd_scripts/master/jd_wish.js, tag=京东心愿单, enabled=true
-
-================Loon==============
-[Script]
-cron "10 8 * * *" script-path=https://raw.githubusercontent.com/lxk0301/jd_scripts/master/jd_wish.js,tag=京东心愿单
-
-===============Surge=================
-京东心愿单 = type=cron,cronexp="10 8 * * *",wake-system=1,timeout=20,script-path=https://raw.githubusercontent.com/lxk0301/jd_scripts/master/jd_wish.js
-
-============小火箭=========
-京东心愿单 = type=cron,script-path=https://raw.githubusercontent.com/lxk0301/jd_scripts/master/jd_wish.js, cronexpr="10 8 * * *", timeout=200, enable=true
- */
+const fs = require('fs')
 const $ = new Env('京东心愿单');
 const notify = $.isNode() ? require('./sendNotify') : '';
 //Node.js用户请在jdCookie.js处填写京东ck;
@@ -70,7 +50,6 @@ const JD_API_HOST = 'https://api.m.jd.com/client.action';
     }
 
   }
-  console.log($.tuanList)
   await writeFile()
 })()
   .catch((e) => {
@@ -93,7 +72,7 @@ async function jdWish() {
 
 }
 async function writeFile() {
-  if(!$.activityId) return
+  if(!$.tuanList) return
   await fs.writeFileSync('jd_zz.json', JSON.stringify($.tuanList));
   console.log(`文件写入成功`);
 }
