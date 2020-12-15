@@ -23,6 +23,8 @@ function getLiveInfo(body) {
             data = JSON.parse(data);
             if(new Date(data.data.publishTime).toDateString() === new Date().toDateString()){
               await notify.sendNotify("超级直播间开播了", '');
+            }else{
+              console.log(`上次开播时间：${new Date(data.data.publishTime)}`)
             }
           }
         }
