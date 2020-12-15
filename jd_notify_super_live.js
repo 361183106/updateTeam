@@ -19,10 +19,9 @@ function getLiveInfo(body) {
           console.log(`${JSON.stringify(err)}`)
           console.log(`${$.name} API请求失败，请检查网路重试`)
         } else {
-          console.log(data)
           if (safeGet(data)) {
             data = JSON.parse(data);
-            console.log(data)
+            console.log(new Date(data.data.publishTime))
           }
         }
       } catch (e) {
@@ -38,7 +37,6 @@ function taskUrl() {
   return {
     url: `https://api.m.jd.com/api?appid=h5-live&functionId=liveDetailToM&body=%7B%20%20%20%20%20%22liveId%22%3A%20%223049668%22%20%7D&t=${new Date().getTime() + new Date().getTimezoneOffset()*60*1000 + 8*60*60*1000}`,
     headers: {
-      'Host': 'digital-floor.m.jd.com',
       'pragma': 'no-cache',
       'cache-control': 'no-cache',
       'accept': 'application/json, text/plain, */*',
