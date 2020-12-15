@@ -21,7 +21,7 @@ function getLiveInfo(body) {
         } else {
           if (safeGet(data)) {
             data = JSON.parse(data);
-            console.log(new Date(data.data.publishTime))
+            console.log(new Date(data.data.publishTime).toDateString())
           }
         }
       } catch (e) {
