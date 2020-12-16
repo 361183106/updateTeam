@@ -3,7 +3,8 @@ const fs = require('fs');
 const qiniu = require('qiniu')
 const notify = $.isNode() ? require('./sendNotify') : '';
 let bodyList = [
-  'area=12_904_908_57903&body=%7B%22liveId%22%3A%223078738%22%7D&build=167454&client=apple&clientVersion=9.3.0&d_brand=apple&d_model=iPhone10%2C2&eid=eidIF3CF0112RTIyQTVGQTEtRDVCQy00Qg%3D%3D6HAJa9%2B/4Vedgo62xKQRoAb47%2Bpyu1EQs/6971aUvk0BQAsZLyQAYeid%2BPgbJ9BQoY1RFtkLCLP5OMqU&isBackground=N&joycious=200&lang=zh_CN&networkType=wifi&networklibtype=JDNetworkBaseAF&openudid=53f4d9c70c1c81f1c8769d2fe2fef0190a3f60d2&osVersion=14.2&partner=apple&rfs=0000&scope=01&screen=1242%2A2208&sign=ff0e714238a55b390f45bc0550b12292&st=1608102151958&sv=100&uts=0f31TVRjBSueCA6d1433N/VvOpFVgTQ3y/aj%2BkqGgDK7b6SH%2BZujHzJG/mFaEItWICnj9Wds6BZ8yacZ%2BXmxOTH9rvs%2B2GKQ9d/Not9tW6IAGCdbhGsp0DqyQxNZOhyenAH51co9hvEsbgdSUCmNuNW/Zl5ymnuGQ/OBnBINZWWUaBZ8/qfLYsoNTQHdcKqecH4bdQ3t6jf9cbx8/WLA6g%3D%3D&uuid=hjudwgohxzVu96krv/T6Hg%3D%3D&wifiBssid=eca3570e9aa3c15b2fad65c40a87f0fb']
+  'area=12_904_908_57903&body=%7B%22liveId%22%3A%223078738%22%7D&build=167454&client=apple&clientVersion=9.3.0&d_brand=apple&d_model=iPhone10%2C2&eid=eidIF3CF0112RTIyQTVGQTEtRDVCQy00Qg%3D%3D6HAJa9%2B/4Vedgo62xKQRoAb47%2Bpyu1EQs/6971aUvk0BQAsZLyQAYeid%2BPgbJ9BQoY1RFtkLCLP5OMqU&isBackground=N&joycious=200&lang=zh_CN&networkType=wifi&networklibtype=JDNetworkBaseAF&openudid=53f4d9c70c1c81f1c8769d2fe2fef0190a3f60d2&osVersion=14.2&partner=apple&rfs=0000&scope=01&screen=1242%2A2208&sign=ff0e714238a55b390f45bc0550b12292&st=1608102151958&sv=100&uts=0f31TVRjBSueCA6d1433N/VvOpFVgTQ3y/aj%2BkqGgDK7b6SH%2BZujHzJG/mFaEItWICnj9Wds6BZ8yacZ%2BXmxOTH9rvs%2B2GKQ9d/Not9tW6IAGCdbhGsp0DqyQxNZOhyenAH51co9hvEsbgdSUCmNuNW/Zl5ymnuGQ/OBnBINZWWUaBZ8/qfLYsoNTQHdcKqecH4bdQ3t6jf9cbx8/WLA6g%3D%3D&uuid=hjudwgohxzVu96krv/T6Hg%3D%3D&wifiBssid=eca3570e9aa3c15b2fad65c40a87f0fb'
+]
 
 !(async () => {
   for(let i=0;i<bodyList.length;++i){
