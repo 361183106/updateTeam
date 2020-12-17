@@ -96,7 +96,7 @@ async function writeFile() {
 
 function getRedRain(body) {
   return new Promise(resolve => {
-    $.post(taskPostUrl('liveActivityV842',body), (err, resp, data) => {
+    $.post(taskPostUrl('liveActivityV842',body), async (err, resp, data) => {
       try {
         if (err) {
           console.log(`${JSON.stringify(err)}`)
