@@ -23,9 +23,9 @@ let bodyList = [
     }
   }
   if($.activityId) {
-    await notify.sendNotify(`${new Date($.startTime).getHours()}点超级直播间红包雨更新成功！`,'');
+    await notify.sendNotify(`${new Date($.startTime).getHours()}点${$.name}更新成功！`,$.activityId);
   }else{
-    await notify.sendNotify(`${new Date($.startTime).getHours()}点超级直播间红包雨无法更新，请检查！`,'');
+    await notify.sendNotify(`${new Date($.startTime).getHours()}点${$.name}无法更新，请检查！`,'');
   }
 })()
   .catch((e) => {
@@ -108,8 +108,6 @@ function getRedRain(body) {
                 $.activityId = url.substr(url.indexOf("id=") + 3)
                 $.startTime = act.startTime
                 $.endTime = act.endTime
-                await notify.sendNotify(`${new Date($.startTime).getHours()}点直播间红包雨2更新成功！`,
-                  $.activityId);
                 console.log(`下一场红包雨开始时间：${new Date(act.startTime)}`)
                 console.log(`下一场红包雨结束时间：${new Date(act.endTime)}`)
               }

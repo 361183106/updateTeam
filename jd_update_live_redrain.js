@@ -26,9 +26,9 @@ let bodyList = [
     }
   }
   if($.activityId) {
-    await notify.sendNotify(`${new Date($.startTime).getHours()}点红包雨更新成功！`,'');
+    await notify.sendNotify(`${new Date($.startTime).getHours()}点${$.name}更新成功！`,$.activityId);
   }else{
-    await notify.sendNotify(`${new Date($.startTime).getHours()}点红包雨无法更新，请检查！`,'');
+    await notify.sendNotify(`${new Date($.startTime).getHours()}点${$.name}无法更新，请检查！`,'');
   }
 })()
   .catch((e) => {
