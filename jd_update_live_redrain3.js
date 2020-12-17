@@ -1,4 +1,4 @@
-const $ = new Env('京东直播间红包雨2');
+const $ = new Env('直播间红包雨2');
 const fs = require('fs');
 const qiniu = require('qiniu')
 const notify = $.isNode() ? require('./sendNotify') : '';
