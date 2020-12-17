@@ -89,7 +89,7 @@ async function writeFile() {
 
 function getRedRain(body) {
   return new Promise(resolve => {
-    $.post(taskPostUrl('liveActivityV842',body), (err, resp, data) => {
+    $.post(taskPostUrl('liveActivityV842',body), async (err, resp, data) => {
       try {
         if (err) {
           console.log(`${JSON.stringify(err)}`)
@@ -102,9 +102,10 @@ function getRedRain(body) {
               if (act) {
                 let url = act.data.activityUrl
                 $.activityId = url.substr(url.indexOf("id=") + 3)
-                console.log(act.activityInfoImg)
                 $.startTime = act.startTime
                 $.endTime = act.endTime
+                await notify.sendNotify(`${new Date($.startTime).getHours()}点直播间红包雨2更新成功！`,
+                  $.activityId);
                 console.log(`下一场红包雨开始时间：${new Date(act.startTime)}`)
                 console.log(`下一场红包雨结束时间：${new Date(act.endTime)}`)
               }
