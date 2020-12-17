@@ -45,7 +45,7 @@ async function writeFile() {
   const accessKey = process.env.QINIU_AK;
   const secretKey = process.env.QINIU_SK;
   const mac = new qiniu.auth.digest.Mac(accessKey, secretKey);
-  const localFile = "jd_live_redRain2.json";
+  const localFile = "jd_live_redRain3.json";
   const putPolicy = new qiniu.rs.PutPolicy({
     scope: "nuist:" + localFile
   });
@@ -56,7 +56,7 @@ async function writeFile() {
     scope: "nuist:" + localFile
   });
   const putExtra = new qiniu.form_up.PutExtra();
-  const key = 'jd_live_redRain2.json';
+  const key = 'jd_live_redRain3.json';
   formUploader.putFile(uploadToken, key, localFile, putExtra, function(respErr,
                                                                        respBody, respInfo) {
     if (respErr) {
@@ -72,7 +72,7 @@ async function writeFile() {
 
   // 刷新缓存
   let urlsToRefresh = [
-    'http://ql4kk90rw.hb-bkt.clouddn.com/jd_live_redRain2.json'
+    'http://ql4kk90rw.hb-bkt.clouddn.com/jd_live_redRain3.json'
   ];
   let cdnManager = new qiniu.cdn.CdnManager(mac);
 
@@ -102,6 +102,7 @@ function getRedRain(body) {
               if (act) {
                 let url = act.data.activityUrl
                 $.activityId = url.substr(url.indexOf("id=") + 3)
+                console.log(act.activityInfoImg)
                 $.startTime = act.startTime
                 $.endTime = act.endTime
                 console.log(`下一场红包雨开始时间：${new Date(act.startTime)}`)
