@@ -1,4 +1,4 @@
-const $ = new Env('更新京东红包雨');
+const $ = new Env('查看超级直播间开播时间');
 const notify = $.isNode() ? require('./sendNotify') : '';
 !(async () => {
   await getLiveInfo()
