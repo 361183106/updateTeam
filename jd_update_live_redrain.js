@@ -3,8 +3,8 @@ const fs = require('fs');
 const qiniu = require('qiniu')
 const notify = $.isNode() ? require('./sendNotify') : '';
 let bodyList = [
-  'area=12_904_908_57903&body=%7B%22liveId%22%3A%223075803%22%7D&build=167454&client=apple&clientVersion=9.3.0&d_brand=apple&d_model=iPhone10%2C2&eid=eidIF3CF0112RTIyQTVGQTEtRDVCQy00Qg%3D%3D6HAJa9%2B/4Vedgo62xKQRoAb47%2Bpyu1EQs/6971aUvk0BQAsZLyQAYeid%2BPgbJ9BQoY1RFtkLCLP5OMqU&isBackground=Y&joycious=202&lang=zh_CN&networkType=wifi&networklibtype=JDNetworkBaseAF&openudid=53f4d9c70c1c81f1c8769d2fe2fef0190a3f60d2&osVersion=14.2&partner=apple&rfs=0000&scope=01&screen=1242%2A2208&sign=084031f5f0f0db7560faecfa7bebe10f&st=1608527053488&sv=122&uts=0f31TVRjBSvsFfn0ufIgE3oCLKHFjQgCiqGvVRu1CFavM2wQIR2wAfmwZ8N/sIXSICVB10KvlrmgYsWKS%2Beyua1UfLcs8MKSUj38XtXafhjLpt3CQPbUk4cLaVWQVzSjwK8ot1cThY8chuZNpGdiEtQt7mXtGdJesfNisWM%2BrEodeK147oZJ1Q4oi8utYAGV4Q5tJJc/NoyBlrrJhoRbYQ%3D%3D&uuid=hjudwgohxzVu96krv/T6Hg%3D%3D&wifiBssid=55287765f23154691a91b6a7aa9859a0',
-  ]
+  'area=12_904_908_57903&body=%7B%22liveId%22%3A%223119024%22%7D&build=167490&client=apple&clientVersion=9.3.2&d_brand=apple&d_model=iPhone10%2C2&eid=eidIF3CF0112RTIyQTVGQTEtRDVCQy00Qg%3D%3D6HAJa9%2B/4Vedgo62xKQRoAb47%2Bpyu1EQs/6971aUvk0BQAsZLyQAYeid%2BPgbJ9BQoY1RFtkLCLP5OMqU&isBackground=N&joycious=202&lang=zh_CN&networkType=wifi&networklibtype=JDNetworkBaseAF&openudid=53f4d9c70c1c81f1c8769d2fe2fef0190a3f60d2&osVersion=14.2&partner=apple&rfs=0000&scope=01&screen=1242%2A2208&sign=504688533289a97b060d058f78d50d50&st=1608598846033&sv=111&uts=0f31TVRjBStw8knSFDdsVgNuIE%2B1ORt50NheRRelOhGQyoKu5pmEL1ZxBbEWgF%2BZ5%2B7FxaZpLk8Itbn81oNE/zMKQ9JkLscJrlL4CZ8NxdPxbDF3pPFDm3dT0SyU%2B/hUx3RPzYQYjhUrPIaBP1w7HzVeloBx3aNW%2BYmXvLdvUEO/wCMlIT91O51x9mC1gbiXKwW2Lb36JNm2HYJj2oZ3Dg%3D%3D&uuid=hjudwgohxzVu96krv/T6Hg%3D%3D&wifiBssid=96fe93266f1662fa0e7d281ddcf33714'
+]
 
 !(async () => {
   for(let i=0;i<bodyList.length;++i){
