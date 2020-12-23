@@ -141,6 +141,7 @@ function userInfo() {
 
 async function tuanActivity() {
   const tuanConfig = await QueryActiveConfig();
+  console.log(tuanConfig)
   if (tuanConfig && tuanConfig.ret === 0) {
     const { activeId, surplusOpenTuanNum, tuanId } = tuanConfig['data']['userTuanInfo'];
     console.log(`今日剩余开团次数：${surplusOpenTuanNum}次,${tuanId}`);
