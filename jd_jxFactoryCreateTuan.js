@@ -142,11 +142,11 @@ function userInfo() {
 async function tuanActivity() {
   const tuanConfig = await QueryActiveConfig();
   if (tuanConfig && tuanConfig.ret === 0) {
-    const { activeId, surplusOpenTuanNum, tuanId } = tuanConfig['data']['userTuanInfo'];
+    const { activeId, surplusOpenTuanNum, tuanId, isOpenTuan } = tuanConfig['data']['userTuanInfo'];
     console.log(`今日剩余开团次数：${surplusOpenTuanNum}次`);
     $.surplusOpenTuanNum = surplusOpenTuanNum;
     console.log(tuanConfig['data']['userTuanInfo'])
-    if (!tuanId && surplusOpenTuanNum > 0) {
+    if (!tuanId && surplusOpenTuanNum > 0 && isOpenTuan !== 2 ) {
       //开团
       await CreateTuan();
       $.log(`准备开团`)
