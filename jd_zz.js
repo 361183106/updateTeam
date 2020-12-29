@@ -47,10 +47,7 @@ const JD_API_HOST = 'https://api.m.jd.com/client.action';
         continue
       }
       await jdWish()
-      await writeFile()
-      return
     }
-
   }
   await writeFile()
 })()
@@ -71,7 +68,6 @@ async function jdWish() {
     if ($.hasOpen) await getUserTuanInfo()
   }
   if ($.tuan) $.tuanList.push($.tuan)
-  console.log($.tuanList)
 
   $.tuan = null
   $.hasOpen = false
@@ -81,7 +77,6 @@ async function jdWish() {
     if ($.hasOpen) await getUserTuanInfo("NINE_BOX")
   }
   if ($.tuan) $.tuanList.push($.tuan)
-  console.log($.tuanList)
 }
 async function writeFile() {
   if(!$.tuanList) return
