@@ -47,6 +47,7 @@ const JD_API_HOST = 'https://api.m.jd.com/client.action';
         continue
       }
       await jdWish()
+      return
     }
 
   }
@@ -69,6 +70,7 @@ async function jdWish() {
     if ($.hasOpen) await getUserTuanInfo()
   }
   if ($.tuan) $.tuanList.push($.tuan)
+  console.log($.tuanList)
 
   $.tuan = null
   $.hasOpen = false
@@ -78,6 +80,7 @@ async function jdWish() {
     if ($.hasOpen) await getUserTuanInfo("NINE_BOX")
   }
   if ($.tuan) $.tuanList.push($.tuan)
+  console.log($.tuanList)
 }
 async function writeFile() {
   if(!$.tuanList) return
@@ -96,6 +99,7 @@ function getUserTuanInfo(channel="FISSION_BEAN") {
         } else {
           if (safeGet(data)) {
             data = JSON.parse(data);
+            console.log(data)
             if (!data.data.canStartNewAssist)
               $.tuan = {
                 "activityIdEncrypted": data.data.id,
