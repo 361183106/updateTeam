@@ -95,7 +95,6 @@ function getUserTuanInfo(channel="FISSION_BEAN") {
         } else {
           if (safeGet(data)) {
             data = JSON.parse(data);
-            console.log(data)
             if (!data.data.canStartNewAssist)
               $.tuan = {
                 "activityIdEncrypted": data.data.id,
@@ -126,7 +125,6 @@ function openTuan(channel="FISSION_BEAN") {
         } else {
           if (safeGet(data)) {
             data = JSON.parse(data);
-            console.log(data)
             if (data['success']) {
               $.hasOpen = true
             }
