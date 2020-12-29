@@ -70,6 +70,14 @@ async function jdWish() {
   }
   if ($.tuan) $.tuanList.push($.tuan)
 
+  $.tuan = null
+  $.hasOpen = false
+  await getUserTuanInfo("NINE_BOX")
+  if (!$.tuan) {
+    await openTuan()
+    if ($.hasOpen) await getUserTuanInfo("NINE_BOX")
+  }
+  if ($.tuan) $.tuanList.push($.tuan)
 }
 async function writeFile() {
   if(!$.tuanList) return
@@ -78,7 +86,7 @@ async function writeFile() {
 }
 
 function getUserTuanInfo(channel="FISSION_BEAN") {
-  let body = {"paramData": {"channel": "FISSION_BEAN"}}
+  let body = {"paramData": {"channel": channel}}
   return new Promise(resolve => {
     $.get(taskTuanUrl("distributeBeanActivityInfo", body), async (err, resp, data) => {
       try {
@@ -107,8 +115,8 @@ function getUserTuanInfo(channel="FISSION_BEAN") {
   })
 }
 
-function openTuan() {
-  let body = {"activityIdEncrypted": $.tuanActId, "channel": "FISSION_BEAN"}
+function openTuan(channel="FISSION_BEAN") {
+  let body = {"activityIdEncrypted": $.tuanActId, "channel": channel}
   return new Promise(resolve => {
     $.get(taskTuanUrl("vvipclub_distributeBean_startAssist", body), async (err, resp, data) => {
       try {
