@@ -78,7 +78,7 @@ async function jdWish() {
   await getUserTuanInfo("NINE_BOX")
   if (!$.tuan) {
     await openTuan()
-    if ($.hasOpen) await getUserTuanInfo("NINE_BOX")
+    if ($.hasOpen) await getUserTuanInfo("NINE_BOX","")
   }
   if ($.tuan) $.tuanList.push($.tuan)
   console.log($.tuanList)
@@ -120,10 +120,10 @@ function getUserTuanInfo(channel="FISSION_BEAN") {
   })
 }
 
-function openTuan(channel="FISSION_BEAN") {
+function openTuan(channel="FISSION_BEAN",app= "swat_miniprogram") {
   let body = {"activityIdEncrypted": $.tuanActId, "channel": channel}
   return new Promise(resolve => {
-    $.get(taskTuanUrl("vvipclub_distributeBean_startAssist", body), async (err, resp, data) => {
+    $.get(taskTuanUrl("vvipclub_distributeBean_startAssist", body, app), async (err, resp, data) => {
       try {
         if (err) {
           console.log(`${JSON.stringify(err)}`)
@@ -203,9 +203,9 @@ function taskUrl(functionId, body = {}) {
   }
 }
 
-function taskTuanUrl(function_id, body = {}) {
+function taskTuanUrl(function_id, body = {},app="swat_miniprogram") {
   return {
-    url: `${JD_API_HOST}?functionId=${function_id}&body=${escape(JSON.stringify(body))}&appid=swat_miniprogram&osVersion=5.0.0&clientVersion=3.1.3&fromType=wxapp&timestamp=${new Date().getTime() + new Date().getTimezoneOffset() * 60 * 1000 + 8 * 60 * 60 * 1000}`,
+    url: `${JD_API_HOST}?functionId=${function_id}&body=${escape(JSON.stringify(body))}&appid=${app}&osVersion=5.0.0&clientVersion=3.1.3&fromType=wxapp&timestamp=${new Date().getTime() + new Date().getTimezoneOffset() * 60 * 1000 + 8 * 60 * 60 * 1000}`,
     headers: {
       "Accept": "*/*",
       "Accept-Encoding": "gzip, deflate, br",
