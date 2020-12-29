@@ -47,6 +47,7 @@ const JD_API_HOST = 'https://api.m.jd.com/client.action';
         continue
       }
       await jdWish()
+      await writeFile()
       return
     }
 
