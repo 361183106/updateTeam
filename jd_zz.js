@@ -77,8 +77,8 @@ async function jdWish() {
   $.hasOpen = false
   await getUserTuanInfo("NINE_BOX")
   if (!$.tuan) {
-    await openTuan()
-    if ($.hasOpen) await getUserTuanInfo("NINE_BOX","")
+    await openTuan("NINE_BOX","lottery_drew")
+    if ($.hasOpen) await getUserTuanInfo("NINE_BOX")
   }
   if ($.tuan) $.tuanList.push($.tuan)
   console.log($.tuanList)
@@ -120,10 +120,10 @@ function getUserTuanInfo(channel="FISSION_BEAN") {
   })
 }
 
-function openTuan(channel="FISSION_BEAN",app= "swat_miniprogram") {
+function openTuan(channel="FISSION_BEAN") {
   let body = {"activityIdEncrypted": $.tuanActId, "channel": channel}
   return new Promise(resolve => {
-    $.get(taskTuanUrl("vvipclub_distributeBean_startAssist", body, app), async (err, resp, data) => {
+    $.get(taskTuanUrl("vvipclub_distributeBean_startAssist", body), async (err, resp, data) => {
       try {
         if (err) {
           console.log(`${JSON.stringify(err)}`)
