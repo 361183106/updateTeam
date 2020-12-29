@@ -63,7 +63,7 @@ const JD_API_HOST = 'https://api.m.jd.com/client.action';
 
 async function jdWish() {
   $.bean = 0
-  /*$.tuan = null
+  $.tuan = null
   $.hasOpen = false
   await getUserTuanInfo()
   if (!$.tuan) {
@@ -71,7 +71,7 @@ async function jdWish() {
     if ($.hasOpen) await getUserTuanInfo()
   }
   if ($.tuan) $.tuanList.push($.tuan)
-  console.log($.tuanList)*/
+  console.log($.tuanList)
 
   $.tuan = null
   $.hasOpen = false
