@@ -105,7 +105,7 @@ function getUserTuanInfo(channel="FISSION_BEAN") {
                 "activityIdEncrypted": data.data.id,
                 "assistStartRecordId": data.data.assistStartRecordId,
                 "assistedPinEncrypted": data.data.encPin,
-                "channel": "FISSION_BEAN"
+                "channel": channel
               }
             $.tuanActId = data.data.id
           }
