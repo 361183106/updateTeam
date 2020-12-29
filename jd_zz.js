@@ -77,7 +77,7 @@ async function writeFile() {
   console.log(`文件写入成功`);
 }
 
-function getUserTuanInfo() {
+function getUserTuanInfo(channel="FISSION_BEAN") {
   let body = {"paramData": {"channel": "FISSION_BEAN"}}
   return new Promise(resolve => {
     $.get(taskTuanUrl("distributeBeanActivityInfo", body), async (err, resp, data) => {
