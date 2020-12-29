@@ -130,6 +130,7 @@ function openTuan(channel="FISSION_BEAN") {
         } else {
           if (safeGet(data)) {
             data = JSON.parse(data);
+            console.log(data)
             if (data['success']) {
               $.hasOpen = true
             }
